@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,7 +10,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final String name = "Giogi";
+  final String username = "Giogi";
+  final String artist = "Leonard Cohen";
+  final String name = "A Thousand Kisses Deep";
 
   TextEditingController inputController = TextEditingController();
 
@@ -27,7 +30,7 @@ class _HomePageState extends State<HomePage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
-                    "Hello $name",
+                    "Hello $username",
                     style: const TextStyle(
                       fontSize: 18,
                     ),
@@ -50,18 +53,67 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
+              const SizedBox(height: 18),
+
               //current
               Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xffeaeaea),
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(12),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color(0xffeaeaea),
+                    width: 1,
                   ),
-                  child: Row(
-                    children: [Container()],
-                  )),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  children: [
+                    //image
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: Image.asset(
+                          "images/image.png",
+                          width: 100,
+                        ),
+                      ),
+                    ),
+
+                    //titles
+                    SizedBox(
+                      height: 100,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            artist,
+                            style: const TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          Text("\"$name\""),
+                          Row(
+                            children: const [
+                              Icon(Icons.skip_previous_rounded),
+                              Icon(Icons.play_circle_outline_rounded),
+                              Icon(Icons.skip_next_rounded),
+                            ],
+                          ),
+                          // TODO! indicator bar (to implement)
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.deepPurple,
+                                borderRadius: BorderRadius.circular(10)),
+                            width: 180,
+                            height: 10,
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
 
               //Recent Playlist
               //queue songs
