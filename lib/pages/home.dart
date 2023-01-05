@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../components/item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -116,7 +115,37 @@ class _HomePageState extends State<HomePage> {
               ),
 
               //Recent Playlist
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text("Recent PlayList"),
+                    Text("More"),
+                  ],
+                ),
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Item(
+                      image: "images/image.png",
+                      artist: "The Beatles",
+                      title: "Don't Let Me Down"),
+                  Item(
+                      image: "images/image.png",
+                      artist: "Gary B.B. Coleman",
+                      title: "The Sky is Crying"),
+                  Item(
+                      image: "images/image.png",
+                      artist: "Frank Sinatra",
+                      title: "Kill Me Softly")
+                ],
+              )
               //queue songs
+
               //nav bar
             ],
           ),
