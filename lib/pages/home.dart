@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/components/queue_item.dart';
 import '../components/item.dart';
 
 class HomePage extends StatefulWidget {
@@ -143,8 +144,23 @@ class _HomePageState extends State<HomePage> {
                       artist: "Frank Sinatra",
                       title: "Kill Me Softly")
                 ],
-              )
+              ),
               //queue songs
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 3,
+                  itemBuilder: ((context, index) {
+                    return const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: QueueItem(
+                        artist: "Sting",
+                        title: "Shape of My Heart",
+                        isFav: true,
+                      ),
+                    );
+                  }),
+                ),
+              )
 
               //nav bar
             ],
