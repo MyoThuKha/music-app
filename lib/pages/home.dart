@@ -1,4 +1,6 @@
+// import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:music_app/components/navbar.dart';
 import 'package:music_app/components/queue_item.dart';
 import '../components/item.dart';
 
@@ -19,12 +21,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
+      bottomNavigationBar: const AppNavBar(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              //app bar
               Container(
                 alignment: Alignment.centerLeft,
                 child: Padding(
