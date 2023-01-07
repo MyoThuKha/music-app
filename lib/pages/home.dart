@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
+      // extendBody: true,
       bottomNavigationBar: const AppNavBar(),
       body: Padding(
         padding: const EdgeInsets.only(left: 12, right: 12, bottom: 0, top: 50),
@@ -121,15 +121,21 @@ class _HomePageState extends State<HomePage> {
 
             //Recent Playlist
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Recent PlayList"),
+                  const Text(
+                    "Recent PlayList",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   Text(
                     "More",
                     style: TextStyle(
-                      color: Colors.grey[300],
+                      color: Colors.grey[600],
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -137,23 +143,27 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Item(
-                    image: "images/image.png",
-                    artist: "The Beatles",
-                    title: "Don't Let Me Down"),
-                Item(
-                    image: "images/image.png",
-                    artist: "Gary B.B. Coleman",
-                    title: "The Sky is Crying"),
-                Item(
-                    image: "images/image.png",
-                    artist: "Frank Sinatra",
-                    title: "Kill Me Softly")
-              ],
+            Padding(
+              padding: const EdgeInsets.only(bottom: 24),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Item(
+                      image: "images/image.png",
+                      artist: "The Beatles",
+                      title: "Don't Let Me Down"),
+                  Item(
+                      image: "images/image.png",
+                      artist: "Gary B.B. Coleman",
+                      title: "The Sky is Crying"),
+                  Item(
+                      image: "images/image.png",
+                      artist: "Frank Sinatra",
+                      title: "Kill Me Softly")
+                ],
+              ),
             ),
+
             //queue songs
             Expanded(
               child: ListView.builder(
