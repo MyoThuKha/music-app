@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:music_app/components/navbar.dart';
+import 'package:music_app/components/control_bar.dart';
 import 'package:music_app/modals/track_time.dart';
 
 class MusicPage extends StatefulWidget {
@@ -20,7 +20,7 @@ class _MusicPageState extends State<MusicPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: AppNavBar(),
+      bottomNavigationBar: ControlBar(),
       body: Column(
         children: [
           //app bar
