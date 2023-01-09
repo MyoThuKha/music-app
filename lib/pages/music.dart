@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/components/navbar.dart';
+import 'package:music_app/modals/track_time.dart';
 
-class MusicPage extends StatelessWidget {
+class MusicPage extends StatefulWidget {
   const MusicPage({super.key});
 
-  final String title = "A Thousand Kisses Deep";
-  final String artist = "Leonard Cohen";
+  @override
+  State<MusicPage> createState() => _MusicPageState();
+}
+
+class _MusicPageState extends State<MusicPage> {
+  String title = "A Thousand Kisses Deep";
+  String artist = "Leonard Cohen";
+  Duration current = Duration.zero;
+  Duration length = Duration.zero;
+
+  double thumbPosition = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -48,27 +58,45 @@ class MusicPage extends StatelessWidget {
                   child: Image.asset("images/image.png"),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  padding: const EdgeInsets.only(left: 12, right: 12),
                   child: Container(
-                      width: 320,
-                      height: 60,
+                      padding: const EdgeInsets.symmetric(vertical: 6),
                       decoration: BoxDecoration(
                         color: Colors.grey[50],
                         borderRadius: BorderRadius.circular(24),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("1:48"),
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.deepPurple,
-                                borderRadius: BorderRadius.circular(10)),
-                            width: 180,
-                            height: 10,
-                          ),
-                          const Text("3:29"),
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              formatTime(current),
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                            SliderTheme(
+                              data: SliderTheme.of(context).copyWith(
+                                  trackHeight: 4,
+                                  activeTrackColor: Colors.black,
+                                  thumbColor: Colors.white,
+                                  thumbShape: const RoundSliderThumbShape(
+                                      enabledThumbRadius: 6)),
+                              child: Slider(
+                                value: thumbPosition,
+                                onChanged: ((value) {
+                                  setState(() {
+                                    thumbPosition = value;
+                                  });
+                                }),
+                              ),
+                            ),
+                            Text(
+                              formatTime(length),
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
                       )),
                 )
               ],
