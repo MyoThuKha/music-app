@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:music_app/components/control_bar.dart';
 import 'package:music_app/modals/track_time.dart';
 
@@ -17,10 +18,17 @@ class _MusicPageState extends State<MusicPage> {
 
   double thumbPosition = 0.0;
 
+  final player = AudioPlayer();
+  Future<void> playAudio() async {
+    final duration = await player
+        .setUrl("https://freesound.org/people/josefpres/sounds/668925/");
+    await player.play();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: ControlBar(),
+      bottomNavigationBar: const ControlBar(),
       body: Column(
         children: [
           //app bar
