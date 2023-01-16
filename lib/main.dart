@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:music_app/pages/home.dart';
 import 'package:music_app/pages/music.dart';
 
 void main() {
@@ -19,8 +20,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
         fontFamily: GoogleFonts.inter().fontFamily,
       ),
-      // home: const HomePage(),
-      home: const MusicPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomePage(),
+        '/music': (context) => const MusicPage(),
+      },
+      // home: const MusicPage(),
     );
   }
 }

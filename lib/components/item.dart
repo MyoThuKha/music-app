@@ -21,7 +21,7 @@ class Item extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
             child: Image.asset(
               image,
-              width: 88,
+              width: 100,
             ),
           ),
 

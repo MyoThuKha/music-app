@@ -12,58 +12,65 @@ class QueueItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(18),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              //play button
-              Icon(
-                Icons.play_circle_outline_rounded,
-                size: 30,
-                color: Colors.grey[600],
-              ),
-              const SizedBox(width: 12),
-              //info
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 12,
+    return GestureDetector(
+      onTap: (() {
+        Navigator.pushNamed(context, '/music');
+      }),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          borderRadius: BorderRadius.circular(18),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                //play button
+                Icon(
+                  Icons.play_circle_outline_rounded,
+                  size: 30,
+                  color: Colors.grey[600],
+                ),
+                const SizedBox(width: 12),
+                //info
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12,
+                      ),
                     ),
-                  ),
-                  Text(
-                    artist,
-                    style: const TextStyle(
-                      fontSize: 10,
+                    Text(
+                      artist,
+                      style: const TextStyle(
+                        fontSize: 10,
+                      ),
                     ),
-                  ),
-                ],
-              )
-            ],
-          ),
-          //actions
-          Row(
-            children: [
-              const Icon(Icons.bar_chart_rounded),
-              const SizedBox(width: 12),
-              Icon(
-                isFav ? Icons.favorite_rounded : Icons.favorite_border_rounded,
-                color: isFav ? Colors.red : null,
-              ),
-            ],
-          )
-        ],
+                  ],
+                )
+              ],
+            ),
+            //actions
+            Row(
+              children: [
+                const Icon(Icons.bar_chart_rounded),
+                const SizedBox(width: 12),
+                Icon(
+                  isFav
+                      ? Icons.favorite_rounded
+                      : Icons.favorite_border_rounded,
+                  color: isFav ? Colors.red : null,
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
